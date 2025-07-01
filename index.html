@@ -2,14 +2,33 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CodyRise - Soluções Tecnológicas Inovadoras</title>
     <meta name="description" content="CodyRise - Desenvolvimento de sistemas, blogs, sites e e-commerces com tecnologia de ponta">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon.png">
+    <link rel="shortcut icon" href="icon.png">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="icon.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+    
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#3b82f6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="CodyRise.png">
+    <meta name="apple-mobile-web-app-title" content="CodyRise">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -83,6 +102,12 @@
         
         body {
             font-family: 'Inter', sans-serif;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        * {
+            box-sizing: border-box;
         }
         
         .gradient-bg {
@@ -130,6 +155,17 @@
             transform: translateZ(0);
             will-change: transform;
         }
+        
+        /* Prevent horizontal overflow */
+        .container, section, div {
+            max-width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .absolute {
+                max-width: 100vw !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-dark-900 text-white overflow-x-hidden">
@@ -147,8 +183,7 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <img src="CodyRise.png" alt="CodyRise Logo" class="h-10 w-auto">
-                    <span class="text-2xl font-bold gradient-text">CodyRise</span>
+                    <img src="CodyRise.png" alt="CodyRise Logo" class="h-8 w-auto">
                 </div>
                 
                 <!-- Desktop Menu -->
@@ -192,18 +227,18 @@
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg">
         <!-- Animated Background -->
-        <div class="absolute inset-0">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-600/20 rounded-full filter blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -3s;"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-4 md:left-10 w-48 h-48 md:w-72 md:h-72 bg-primary-600/20 rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-4 md:right-10 w-64 h-64 md:w-96 md:h-96 bg-purple-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-cyan-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
         </div>
         
         <!-- Floating Code Elements -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="floating-element absolute top-1/4 left-1/12 text-primary-400/30 text-2xl font-mono">&lt;/&gt;</div>
-            <div class="floating-element absolute top-1/3 right-1/12 text-cyan-400/30 text-3xl font-mono" style="animation-delay: -2s;">{}</div>
-            <div class="floating-element absolute bottom-1/4 left-1/6 text-purple-400/30 text-2xl font-mono" style="animation-delay: -4s;">function()</div>
-            <div class="floating-element absolute top-2/3 right-1/6 text-green-400/30 text-2xl font-mono" style="animation-delay: -1s;">console.log</div>
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="floating-element absolute top-1/4 left-4 md:left-1/12 text-primary-400/30 text-lg md:text-2xl font-mono">&lt;/&gt;</div>
+            <div class="floating-element absolute top-1/3 right-4 md:right-1/12 text-cyan-400/30 text-xl md:text-3xl font-mono" style="animation-delay: -2s;">{}</div>
+            <div class="floating-element absolute bottom-1/4 left-8 md:left-1/6 text-purple-400/30 text-sm md:text-2xl font-mono" style="animation-delay: -4s;">function()</div>
+            <div class="floating-element absolute top-2/3 right-8 md:right-1/6 text-green-400/30 text-sm md:text-2xl font-mono" style="animation-delay: -1s;">console.log</div>
         </div>
         
         <!-- Main Content -->
@@ -214,9 +249,9 @@
                 </span>
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.2] md:leading-[1.3]">
                 Transformamos
-                <span class="gradient-text block typing-animation">Ideias em Código</span>
+                <span class="gradient-text block typing-animation" style="line-height: 1.2;">Ideias em Código</span>
             </h1>
             
             <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
@@ -227,7 +262,7 @@
                 que elevam seu negócio ao próximo nível
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 relative z-20" data-aos="fade-up" data-aos-delay="400">
                 <a href="#services" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 animate-glow">
                     <i class="fas fa-rocket mr-2"></i>
                     Explorar Serviços
@@ -237,14 +272,14 @@
                     Ver Portfólio
                 </a>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-in" data-aos-delay="800">
-                <div class="w-6 h-10 border-2 border-primary-400 rounded-full flex justify-center">
-                    <div class="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-pulse"></div>
-                </div>
-                <p class="text-sm text-gray-400 mt-2">Role para baixo</p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10" data-aos="fade-in" data-aos-delay="800">
+            <div class="w-6 h-10 border-2 border-primary-400 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-pulse"></div>
             </div>
+            <p class="text-sm text-gray-400 mt-2 text-center">Role para baixo</p>
         </div>
     </section>
 
@@ -646,8 +681,7 @@
                 <!-- Logo & Description -->
                 <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
-                        <img src="CodyRise.png" alt="CodyRise Logo" class="h-10 w-auto">
-                        <span class="text-2xl font-bold gradient-text">CodyRise</span>
+                        <img src="CodyRise.png" alt="CodyRise Logo" class="h-8 w-auto">
                     </div>
                     <p class="text-gray-300 max-w-md mb-6">
                         Transformando ideias em soluções tecnológicas inovadoras. 
