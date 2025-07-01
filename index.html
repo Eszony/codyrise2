@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodyRise - Soluções Tecnológicas Inovadoras</title>
+    <meta name="description" content="CodyRise - Desenvolvimento de sistemas, blogs, sites e e-commerces com tecnologia de ponta">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="CodyRise.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 1)' }
+                        },
+                        typing: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6 }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .parallax {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 bg-dark-900 z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-xl font-semibold gradient-text">Carregando CodyRise...</p>
+        </div>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="fixed top-0 w-full z-40 transition-all duration-300" id="navbar">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="CodyRise.png" alt="CodyRise Logo" class="h-10 w-auto">
+                    <span class="text-2xl font-bold gradient-text">CodyRise</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-primary-400 transition-colors duration-300">Início</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-primary-400 transition-colors duration-300">Serviços</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-primary-400 transition-colors duration-300">Sobre</a>
+                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-primary-400 transition-colors duration-300">Portfólio</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-primary-400 transition-colors duration-300">Contato</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 animate-glow">
+                        Começar Projeto
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden absolute top-full left-0 w-full bg-dark-800/95 backdrop-blur-md hidden" id="mobile-menu">
+                <div class="px-6 py-4 space-y-4">
+                    <a href="#home" class="block text-gray-300 hover:text-primary-400 transition-colors">Início</a>
+                    <a href="#services" class="block text-gray-300 hover:text-primary-400 transition-colors">Serviços</a>
+                    <a href="#about" class="block text-gray-300 hover:text-primary-400 transition-colors">Sobre</a>
+                    <a href="#portfolio" class="block text-gray-300 hover:text-primary-400 transition-colors">Portfólio</a>
+                    <a href="#contact" class="block text-gray-300 hover:text-primary-400 transition-colors">Contato</a>
+                    <a href="#contact" class="block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-semibold text-center mt-4">
+                        Começar Projeto
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-600/20 rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-600/20 rounded-full filter blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+        </div>
+        
+        <!-- Floating Code Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-element absolute top-1/4 left-1/12 text-primary-400/30 text-2xl font-mono">&lt;/&gt;</div>
+            <div class="floating-element absolute top-1/3 right-1/12 text-cyan-400/30 text-3xl font-mono" style="animation-delay: -2s;">{}</div>
+            <div class="floating-element absolute bottom-1/4 left-1/6 text-purple-400/30 text-2xl font-mono" style="animation-delay: -4s;">function()</div>
+            <div class="floating-element absolute top-2/3 right-1/6 text-green-400/30 text-2xl font-mono" style="animation-delay: -1s;">console.log</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 text-center max-w-6xl mx-auto px-6" data-aos="fade-up">
+            <div class="mb-6">
+                <span class="inline-block bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-primary-600/30">
+                    🚀 Tecnologia Inovadora
+                </span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Transformamos
+                <span class="gradient-text block typing-animation">Ideias em Código</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Desenvolvimento de <span class="text-primary-400 font-semibold">sistemas</span>, 
+                <span class="text-cyan-400 font-semibold">sites</span>, 
+                <span class="text-purple-400 font-semibold">blogs</span> e 
+                <span class="text-green-400 font-semibold">e-commerces</span> 
+                que elevam seu negócio ao próximo nível
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="400">
+                <a href="#services" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 animate-glow">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Explorar Serviços
+                </a>
+                <a href="#portfolio" class="border-2 border-primary-600 text-primary-400 hover:bg-primary-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-eye mr-2"></i>
+                    Ver Portfólio
+                </a>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-in" data-aos-delay="800">
+                <div class="w-6 h-10 border-2 border-primary-400 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-pulse"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Role para baixo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-dark-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="inline-block bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-primary-600/30 mb-4">
+                    Nossos Serviços
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Soluções <span class="gradient-text">Completas</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Oferecemos desenvolvimento personalizado para transformar sua visão em realidade digital
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Sistema -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl p-8 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cogs text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Sistemas</h3>
+                    <p class="text-gray-300 mb-6">Desenvolvimento de sistemas robustos e escaláveis para otimizar processos empresariais e aumentar a produtividade.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-check text-primary-400 mr-2"></i>ERP & CRM</li>
+                        <li><i class="fas fa-check text-primary-400 mr-2"></i>Automação</li>
+                        <li><i class="fas fa-check text-primary-400 mr-2"></i>APIs REST</li>
+                        <li><i class="fas fa-check text-primary-400 mr-2"></i>Integração</li>
+                    </ul>
+                </div>
+                
+                <!-- Blogs -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl p-8 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-blog text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Blogs</h3>
+                    <p class="text-gray-300 mb-6">Criação de blogs modernos e otimizados para SEO, com gestão de conteúdo intuitiva e design responsivo.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-check text-purple-400 mr-2"></i>CMS Personalizado</li>
+                        <li><i class="fas fa-check text-purple-400 mr-2"></i>SEO Otimizado</li>
+                        <li><i class="fas fa-check text-purple-400 mr-2"></i>Analytics</li>
+                        <li><i class="fas fa-check text-purple-400 mr-2"></i>Responsivo</li>
+                    </ul>
+                </div>
+                
+                <!-- Sites -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl p-8 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-globe text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Sites</h3>
+                    <p class="text-gray-300 mb-6">Desenvolvimento de sites institucionais e landing pages com foco em conversão e experiência do usuário.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i>Landing Pages</li>
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i>Sites Institucionais</li>
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i>PWA</li>
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i>Performance</li>
+                    </ul>
+                </div>
+                
+                <!-- E-commerces -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl p-8 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-shopping-cart text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">E-commerces</h3>
+                    <p class="text-gray-300 mb-6">Lojas virtuais completas com pagamento seguro, gestão de estoque e dashboard administrativo avançado.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Pagamentos</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Estoque</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Dashboard</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Mobile First</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-900">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <span class="inline-block bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-primary-600/30 mb-4">
+                        Sobre a CodyRise
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Inovação em <span class="gradient-text">Cada Linha de Código</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Somos uma empresa especializada em desenvolvimento de soluções tecnológicas inovadoras. 
+                        Com anos de experiência no mercado, transformamos ideias em produtos digitais de alta qualidade.
+                    </p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-rocket text-primary-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">Performance</h4>
+                                <p class="text-gray-300">Desenvolvemos soluções otimizadas para máxima velocidade e eficiência.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">Segurança</h4>
+                                <p class="text-gray-300">Priorizamos a segurança em todas as camadas da aplicação.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">Suporte</h4>
+                                <p class="text-gray-300">Oferecemos suporte contínuo e manutenção para todos os projetos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-700">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text mb-2">100+</div>
+                            <div class="text-gray-400">Projetos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text mb-2">5+</div>
+                            <div class="text-gray-400">Anos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text mb-2">98%</div>
+                            <div class="text-gray-400">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative" data-aos="fade-left">
+                    <div class="relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Equipe trabalhando" 
+                             class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Floating Cards -->
+                    <div class="absolute -top-6 -right-6 bg-primary-600 text-white p-4 rounded-2xl shadow-2xl floating-element">
+                        <div class="text-2xl font-bold">24/7</div>
+                        <div class="text-sm">Suporte</div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-green-600 text-white p-4 rounded-2xl shadow-2xl floating-element" style="animation-delay: -2s;">
+                        <div class="text-2xl font-bold">99.9%</div>
+                        <div class="text-sm">Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-dark-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="inline-block bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-primary-600/30 mb-4">
+                    Nosso Portfólio
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Projetos que <span class="gradient-text">Fazem a Diferença</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Confira alguns dos projetos desenvolvidos pela nossa equipe
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Dashboard Analytics" 
+                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-primary-600 text-white px-3 py-1 rounded-full text-sm">Sistema</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dashboard Analytics</h3>
+                        <p class="text-gray-300 mb-4">Sistema completo de analytics com visualização de dados em tempo real.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-primary-600/20 text-primary-400 px-2 py-1 rounded text-xs">React</span>
+                            <span class="bg-primary-600/20 text-primary-400 px-2 py-1 rounded text-xs">Node.js</span>
+                            <span class="bg-primary-600/20 text-primary-400 px-2 py-1 rounded text-xs">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-primary-400 hover:text-primary-300 font-semibold">
+                            Ver projeto <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="E-commerce" 
+                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Loja Virtual Premium</h3>
+                        <p class="text-gray-300 mb-4">E-commerce completo com pagamentos integrados e gestão avançada.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Next.js</span>
+                            <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Stripe</span>
+                            <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">PostgreSQL</span>
+                        </div>
+                        <a href="#" class="text-green-400 hover:text-green-300 font-semibold">
+                            Ver projeto <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486312338219-ce68e2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Blog Tech" 
+                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Blog</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tech Blog</h3>
+                        <p class="text-gray-300 mb-4">Blog tecnológico com CMS personalizado e otimização SEO avançada.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Nuxt.js</span>
+                            <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Strapi</span>
+                            <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">SEO</span>
+                        </div>
+                        <a href="#" class="text-purple-400 hover:text-purple-300 font-semibold">
+                            Ver projeto <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="#contact" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                    Ver Todos os Projetos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="inline-block bg-primary-600/20 text-primary-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-primary-600/30 mb-4">
+                    Entre em Contato
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Vamos <span class="gradient-text">Criar Juntos</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Pronto para transformar sua ideia em realidade? Entre em contato conosco!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-8">Informações de Contato</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">Email</h4>
+                                <p class="text-gray-300">contato@codyrise.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone text-primary-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">Telefone</h4>
+                                <p class="text-gray-300">(11) 99999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">Localização</h4>
+                                <p class="text-gray-300">São Paulo, Brasil</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-4">Siga-nos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center hover:bg-primary-600/40 transition-colors duration-300">
+                                <i class="fab fa-linkedin text-primary-400"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center hover:bg-primary-600/40 transition-colors duration-300">
+                                <i class="fab fa-github text-primary-400"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary-600/20 rounded-lg flex items-center justify-center hover:bg-primary-600/40 transition-colors duration-300">
+                                <i class="fab fa-instagram text-primary-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="card-hover bg-dark-700/50 backdrop-blur-md border border-gray-600/30 rounded-2xl p-8" data-aos="fade-left">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold mb-2">Nome</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 bg-dark-800/50 border border-gray-600/30 rounded-lg focus:border-primary-400 focus:outline-none transition-colors duration-300 text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 bg-dark-800/50 border border-gray-600/30 rounded-lg focus:border-primary-400 focus:outline-none transition-colors duration-300 text-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold mb-2">Assunto</label>
+                            <select id="subject" name="subject" required 
+                                    class="w-full px-4 py-3 bg-dark-800/50 border border-gray-600/30 rounded-lg focus:border-primary-400 focus:outline-none transition-colors duration-300 text-white">
+                                <option value="">Selecione um serviço</option>
+                                <option value="sistema">Sistema</option>
+                                <option value="blog">Blog</option>
+                                <option value="site">Site</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      class="w-full px-4 py-3 bg-dark-800/50 border border-gray-600/30 rounded-lg focus:border-primary-400 focus:outline-none transition-colors duration-300 text-white resize-none"
+                                      placeholder="Conte-nos sobre seu projeto..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 animate-glow">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-800 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo & Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="CodyRise.png" alt="CodyRise Logo" class="h-10 w-auto">
+                        <span class="text-2xl font-bold gradient-text">CodyRise</span>
+                    </div>
+                    <p class="text-gray-300 max-w-md mb-6">
+                        Transformando ideias em soluções tecnológicas inovadoras. 
+                        Desenvolvimento de sistemas, sites, blogs e e-commerces de alta qualidade.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sistemas</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Blogs</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sites</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">E-commerces</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Início</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sobre</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Portfólio</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 CodyRise. Todos os direitos reservados. Desenvolvido com ❤️ pela equipe CodyRise.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 100
+            });
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }, 1500);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                navbar.classList.add('bg-dark-900/95', 'backdrop-blur-md', 'border-b', 'border-gray-700/50');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-dark-900/95', 'backdrop-blur-md', 'border-b', 'border-gray-700/50');
+                navbar.classList.add('bg-transparent');
+            }
+
+            // Hide/show navbar on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times text-xl"></i>';
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                document.body.style.overflow = 'auto';
+                isMenuOpen = false;
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary-400');
+                link.classList.add('text-gray-300');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-primary-400');
+                }
+            });
+        });
+
+        // Parallax effect for hero background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Typing animation for hero text
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderRight = '2px solid #3b82f6';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // Blinking cursor effect
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                    }, 1000);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const typingElement = document.querySelector('.typing-animation');
+                if (typingElement) {
+                    typeWriter(typingElement, 'Ideias em Código', 100);
+                }
+            }, 2000);
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission (replace with actual form handling)
+                setTimeout(() => {
+                    // Reset form
+                    this.reset();
+                    
+                    // Show success message
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Mensagem Enviada!';
+                    submitBtn.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                    submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        submitBtn.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                    }, 3000);
+                    
+                    // You can integrate with EmailJS, Netlify Forms, or your backend here
+                    console.log('Form data:', data);
+                }, 2000);
+            });
+        }
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : element.textContent.includes('%') ? '%' : '');
+                }
+            }
+            updateCounter();
+        }
+
+        // Intersection Observer for counter animations
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.gradient-text');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent);
+                        if (!isNaN(target)) {
+                            animateCounter(counter, target);
+                        }
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('#about .grid-cols-3');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+
+        // Cursor trail effect (optional)
+        let mouseX = 0, mouseY = 0;
+        let trail = [];
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function createTrail() {
+            trail.push({x: mouseX, y: mouseY});
+            if (trail.length > 10) trail.shift();
+            
+            const existingTrails = document.querySelectorAll('.cursor-trail');
+            existingTrails.forEach(t => t.remove());
+            
+            trail.forEach((point, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'cursor-trail';
+                dot.style.cssText = `
+                    position: fixed;
+                    top: ${point.y}px;
+                    left: ${point.x}px;
+                    width: ${10 - index}px;
+                    height: ${10 - index}px;
+                    background: rgba(59, 130, 246, ${1 - index * 0.1});
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transform: translate(-50%, -50%);
+                `;
+                document.body.appendChild(dot);
+                
+                setTimeout(() => dot.remove(), 1000);
+            });
+        }
+
+        // Uncomment to enable cursor trail
+        // setInterval(createTrail, 50);
+
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            let progressBar = document.querySelector('.scroll-progress');
+            if (!progressBar) {
+                progressBar = document.createElement('div');
+                progressBar.className = 'scroll-progress';
+                progressBar.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 0%;
+                    height: 3px;
+                    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+                    z-index: 9999;
+                    transition: width 0.3s ease;
+                `;
+                document.body.appendChild(progressBar);
+            }
+            
+            progressBar.style.width = `${scrollPercent}%`;
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // Lazy loading for images
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+
+        // Performance optimizations
+        let ticking = false;
+
+        function updateOnScroll() {
+            updateScrollProgress();
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', updateOnScroll, { passive: true });
+
+        // Service Worker for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,78 @@
+{
+  "name": "CodyRise - Soluções Tecnológicas",
+  "short_name": "CodyRise",
+  "description": "Desenvolvimento de sistemas, blogs, sites e e-commerces com tecnologia de ponta",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "categories": ["technology", "business", "productivity"],
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "CodyRise.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "CodyRise.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "CodyRise Homepage"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "CodyRise Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Serviços",
+      "short_name": "Serviços",
+      "description": "Ver nossos serviços",
+      "url": "/#services",
+      "icons": [
+        {
+          "src": "CodyRise.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato conosco",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "CodyRise.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "scope": "/",
+  "id": "codyrise-tech",
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+} 
